@@ -1,0 +1,1 @@
+export { PromotionsBottomBar } from './PromotionsBottomBar';
