@@ -1,33 +1,17 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { Home } from './routes';
 
 export const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar />
-      <View>
-        <Text
-          style={{
-            fontFamily: 'Helvetica',
-            fontWeight: '700',
-            fontSize: 32,
-            textAlign: 'center',
-          }}
-        >
-          Kaizen Case
-        </Text>
-        <Text
-          style={{
-            fontFamily: 'Helvetica',
-            fontWeight: '400',
-            fontSize: 16,
-            textAlign: 'center',
-          }}
-        >
-          Kaizen Tech
-        </Text>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView style={styles.container}>
+        <StatusBar />
+        <Home />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
