@@ -8,6 +8,7 @@ import {
   useGetPromotionsQuery,
   useGetTagsQuery,
 } from '../api/promotionsApiSlice';
+import { PromotionsHeader } from '../components';
 
 export const Promotions = () => {
   const navigation = useNavigation<HomeBottomTabNavigationProp>();
@@ -20,6 +21,8 @@ export const Promotions = () => {
 
   return (
     <Layout>
+      <PromotionsHeader />
+
       <Text>Promotion Tags</Text>
       <View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>

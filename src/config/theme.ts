@@ -5,7 +5,8 @@ export const theme = {
   yellow: '#f1de02',
   orange: '#ff8300',
   red: '#f40000',
-  bottomBarBorder: '#eceefe',
-  bottomTabBtnActive: '#1d1e1c',
-  bottomTabBtnPassive: '#bcbcbb',
+
+  lighterGray: '#eceefe',
+  lightGray: '#bcbcbb',
+  darkGray: '#1d1e1c',
 };
