@@ -1,7 +1,10 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { NavigatorScreenParams } from '@react-navigation/native';
 
-import { PromotionsBottomTabParamList, PromotionsStackParamList } from '.';
+import type {
+  PromotionsBottomTabParamList,
+  PromotionsStackParamList,
+} from '@/features/promotions/types';
 
 export type HomeBottomTabParamList = {
   PromotionsBottomTab: NavigatorScreenParams<PromotionsBottomTabParamList>;

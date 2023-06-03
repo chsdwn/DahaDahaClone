@@ -5,8 +5,9 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 
-import { Promotions, Wallet } from '@/screens';
-import { PromotionsBottomTabParamList } from '@/types';
+import { Wallet } from '@/screens';
+import { PromotionsBottomTabParamList } from '../types';
+import { Promotions } from '../screens';
 
 const PromotionsBottomBar = ({ navigation }: BottomTabBarProps) => {
   const routeIndex = navigation.getState().index;
