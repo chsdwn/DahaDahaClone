@@ -1,4 +1,12 @@
+export { BrandIcon } from './BrandIcon';
+export { CarouselButton } from './CarouselButton';
+export { CarouselImage } from './CarouselImage';
+export { CarouselProgress } from './CarouselProgress';
+export { CarouselRemainingDaysBadge } from './CarouselRemainingDaysBadge';
+export { CarouselTitle } from './CarouselTitle';
+export { PromotionCardIcon } from './PromotionCardIcon';
 export { PromotionsBottomBar } from './PromotionsBottomBar';
+export { PromotionsCarousel } from './PromotionsCarousel';
 export { PromotionsHeader } from './PromotionsHeader';
 export { TagButton } from './TagButton';
 export { TagButtonsList } from './TagButtonsList';

@@ -10,12 +10,10 @@ export const PromotionsBottomBar = ({ navigation }: BottomTabBarProps) => {
   const routeIndex = navigation.getState().index;
 
   const isPromotionsTabActive = routeIndex === 0;
-  const promotionTabColor = isPromotionsTabActive
-    ? theme.darkGray
-    : theme.lightGray;
+  const promotionTabColor = isPromotionsTabActive ? theme.darkGray : theme.gray;
 
   const isWalletTabActive = routeIndex === 1;
-  const walletTabColor = isWalletTabActive ? theme.darkGray : theme.lightGray;
+  const walletTabColor = isWalletTabActive ? theme.darkGray : theme.gray;
 
   return (
     <View style={styles.container}>

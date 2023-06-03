@@ -31,8 +31,8 @@ export const PromotionsHeader = () => {
               { backgroundColor: loggedIn ? theme.red : theme.darkGray },
             ]}
           >
-            {loggedIn && <View style={styles.loggedInIndicator} />}
             <Profile color={theme.white} width={18} height={18} />
+            {loggedIn && <View style={styles.loggedInIndicator} />}
           </View>
         </TouchableWithoutFeedback>
       </View>
