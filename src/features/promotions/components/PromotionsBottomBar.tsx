@@ -11,13 +11,11 @@ export const PromotionsBottomBar = ({ navigation }: BottomTabBarProps) => {
 
   const isPromotionsTabActive = routeIndex === 0;
   const promotionTabColor = isPromotionsTabActive
-    ? theme.bottomTabBtnActive
-    : theme.bottomTabBtnPassive;
+    ? theme.darkGray
+    : theme.lightGray;
 
   const isWalletTabActive = routeIndex === 1;
-  const walletTabColor = isWalletTabActive
-    ? theme.bottomTabBtnActive
-    : theme.bottomTabBtnPassive;
+  const walletTabColor = isWalletTabActive ? theme.darkGray : theme.lightGray;
 
   return (
     <View style={styles.container}>
@@ -65,19 +63,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderColor: theme.bottomBarBorder,
+    borderColor: theme.lighterGray,
     borderWidth: 2.5,
     borderTopRightRadius: 16,
     borderTopLeftRadius: 16,
   },
   tabBtn: {
     paddingHorizontal: 8,
-    paddingVertical: 4,
+    paddingVertical: 6,
     width: '40%',
     alignItems: 'center',
   },
   tabBtnTitle: {
     textAlign: 'center',
+    fontSize: 12,
   },
   logoContainer: {
     justifyContent: 'center',
@@ -89,8 +88,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 66,
     height: 46,
-    borderRadius: 24,
-    top: -38,
+    borderRadius: 26,
+    top: -20,
     backgroundColor: theme.black,
     opacity: 0.05,
   },
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     borderBottomColor: theme.orange,
     borderLeftColor: theme.red,
     borderWidth: 3,
-    borderRadius: 24,
+    borderRadius: 26,
     padding: 12,
     position: 'absolute',
     top: -44,
