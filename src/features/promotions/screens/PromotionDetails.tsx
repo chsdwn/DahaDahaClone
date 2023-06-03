@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import { useRoute } from '@react-navigation/core';
 
+import { Layout, Text } from '@/components';
 import { PromotionDetailsRouteProp } from '../types';
 import { useGetPromotionDetailsQuery } from '../api/promotionsApiSlice';
 
@@ -16,10 +16,10 @@ export const PromotionDetails = () => {
   if (!promotion) return <Text>Promotion not found</Text>;
 
   return (
-    <View>
+    <Layout>
       <Text>Promotion Details</Text>
       <Text>{promotion.Title}</Text>
       <Text>{promotion.Description}</Text>
-    </View>
+    </Layout>
   );
 };

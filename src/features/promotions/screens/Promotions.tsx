@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
+import { Layout, Text } from '@/components';
 import { HomeBottomTabNavigationProp } from '@/types';
 import {
   useGetPromotionsQuery,
@@ -18,18 +19,20 @@ export const Promotions = () => {
   if (isLoading) return <Text>Loading...</Text>;
 
   return (
-    <View>
+    <Layout>
       <Text>Promotion Tags</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {tags.length > 0 &&
-          tags.map((tag) => (
-            <TouchableWithoutFeedback key={tag.Id}>
-              <View style={{ borderWidth: 1, borderColor: 'black' }}>
-                <Text>{tag.Name}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-          ))}
-      </ScrollView>
+      <View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          {tags.length > 0 &&
+            tags.map((tag) => (
+              <TouchableWithoutFeedback key={tag.Id}>
+                <View style={{ borderWidth: 1, borderColor: 'black' }}>
+                  <Text>{tag.Name}</Text>
+                </View>
+              </TouchableWithoutFeedback>
+            ))}
+        </ScrollView>
+      </View>
 
       <Text>Promotions</Text>
       {promotions?.map((promotion) => (
@@ -47,6 +50,6 @@ export const Promotions = () => {
           </View>
         </TouchableWithoutFeedback>
       ))}
-    </View>
+    </Layout>
   );
 };

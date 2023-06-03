@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 export const Wallet = () => {
   return (
     <View>
-      <Text style={{ textAlign: 'center' }}>Data Cüzdan</Text>
+      <Text style={{ textAlign: 'center' }}>Daha Cüzdan</Text>
     </View>
   );
 };
