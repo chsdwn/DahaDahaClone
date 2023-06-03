@@ -8,14 +8,14 @@ type IProps = {
   height?: number;
 };
 
-export const DahaDaha = ({ width = 100, height }: IProps) => {
+export const DahaDaha = ({ width, height }: IProps) => {
   return (
     <Image
       source={icon}
       style={[
         styles.image,
         {
-          width: width,
+          width,
           height,
         },
       ]}
@@ -26,6 +26,5 @@ export const DahaDaha = ({ width = 100, height }: IProps) => {
 const styles = StyleSheet.create({
   image: {
     aspectRatio: 512 / 253,
-    backgroundColor: 'red',
   },
 });
