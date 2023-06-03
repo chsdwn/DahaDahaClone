@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "e2e",
+    "src",
+    ".eslintrc.js",
+    "babel.config.js",
+    "index.js",
+    "metro.config.js"
+  ]
+}

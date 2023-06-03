@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Helvetica.ttf",
+      "sha1": "7ee5c573e3d3c1a8101befa7d89224c462c33554"
+    },
+    {
+      "path": "assets/fonts/HelveticaBold.ttf",
+      "sha1": "16aad27a7baa301b1da34bfd2525ec937139331d"
+    }
+  ]
+}
