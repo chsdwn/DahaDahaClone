@@ -1,10 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+
+import { Layout, Text } from '@/components';
 
 export const Wallet = () => {
   return (
-    <View>
-      <Text style={{ textAlign: 'center' }}>Daha Cüzdan</Text>
-    </View>
+    <Layout style={{ paddingTop: 16 }}>
+      <Text style={{ textAlign: 'center', fontWeight: '700', fontSize: 32 }}>
+        Daha Cüzdan
+      </Text>
+    </Layout>
   );
 };
