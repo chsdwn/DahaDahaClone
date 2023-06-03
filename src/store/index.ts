@@ -7,8 +7,11 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 
 import { apiSlice } from '@/api/apiSlice';
+import { promotionsSliceReducer } from '@/features/promotions/store/promotionsSlice';
 
-const reducers = {};
+const reducers = {
+  promotions: promotionsSliceReducer,
+};
 
 export const store = configureStore({
   reducer: {
