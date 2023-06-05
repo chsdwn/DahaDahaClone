@@ -35,7 +35,10 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
       params: { id },
     });
   };
+
   if (isLoading) return <Loading />;
+  if (promotions.length === 0) return null;
+
   return (
     <View>
       <Carousel
