@@ -8,14 +8,15 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import RenderHtml from 'react-native-render-html';
+import LinearGradient from 'react-native-linear-gradient';
 
 import { Layout, Loading, Text } from '@/components';
 import { LeftArrow } from '@/components/icons';
+import { WINDOW_WIDTH } from '@/config';
 import { theme } from '@/config/theme';
 import { useGetPromotionDetailsQuery } from '../api/promotionsApiSlice';
 import { BrandIcon, CarouselRemainingDaysBadge } from '../components';
 import { PromotionDetailsRouteProp } from '../types';
-import { WINDOW_WIDTH } from '@/config';
 
 export const PromotionDetails = () => {
   const navigation = useNavigation();
@@ -87,10 +88,16 @@ export const PromotionDetails = () => {
         </View>
       </ScrollView>
 
-      <View style={styles.bottomBtnShadow} />
-      <View style={styles.bottomBtnContainer}>
-        <Text style={styles.bottomBtnTitle}>{promotion.DetailButtonText}</Text>
-      </View>
+      <LinearGradient
+        colors={['rgba(255,255,255,0)', theme.white]}
+        style={styles.bottomBtnGradient}
+      >
+        <View style={styles.bottomBtnContainer}>
+          <Text style={styles.bottomBtnTitle}>
+            {promotion.DetailButtonText}
+          </Text>
+        </View>
+      </LinearGradient>
     </Layout>
   );
 };
@@ -132,14 +139,21 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 96,
   },
-  bottomBtnContainer: {
+  bottomBtnGradient: {
     position: 'absolute',
-    bottom: 20,
-    left: 16,
+    bottom: 0,
+    left: 0,
+    height: 130,
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  bottomBtnContainer: {
     width: WINDOW_WIDTH - 32,
     backgroundColor: theme.red,
     padding: 18,
     borderRadius: 28,
+    marginBottom: 20,
   },
   bottomBtnTitle: {
     textAlign: 'center',
