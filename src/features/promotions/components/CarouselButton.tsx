@@ -1,41 +1,28 @@
 import React from 'react';
-import { TouchableWithoutFeedback, View } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
-import RenderHtml from 'react-native-render-html';
-
-import { HomeBottomTabNavigationProp } from '@/types';
+import { View } from 'react-native';
+import RenderHtml, { MixedStyleDeclaration } from 'react-native-render-html';
 
 type IProps = {
-  id: number;
   html: string;
 };
 
-export const CarouselButton = ({ id, html }: IProps) => {
-  const navigation = useNavigation<HomeBottomTabNavigationProp>();
-
-  const handleNavigatePromotionDetails = () => {
-    navigation.navigate('PromotionDetailsStack', {
-      screen: 'PromotionDetails',
-      params: { id },
-    });
-  };
-
+export const CarouselButton = ({ html }: IProps) => {
   return (
-    <TouchableWithoutFeedback onPress={handleNavigatePromotionDetails}>
-      <View>
-        <RenderHtml
-          source={{ html }}
-          contentWidth={100}
-          tagsStyles={{
-            p: {
-              fontFamily: 'Helvetica',
-              fontWeight: '700',
-              fontSize: 14,
-              textAlign: 'center',
-            },
-          }}
-        />
-      </View>
-    </TouchableWithoutFeedback>
+    <View>
+      <RenderHtml
+        source={{ html }}
+        contentWidth={100}
+        tagsStyles={tagsStyles}
+      />
+    </View>
   );
 };
+
+const tagsStyles = {
+  p: {
+    fontFamily: 'Helvetica',
+    fontWeight: '700',
+    fontSize: 14,
+    textAlign: 'center',
+  },
+} as Readonly<Record<string, MixedStyleDeclaration>>;
