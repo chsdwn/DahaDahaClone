@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -17,8 +17,25 @@ type IProps = {
 };
 
 export const CarouselProgress = (props: IProps) => {
-  const { animValue, index, length, backgroundColor, isRotate } = props;
+  const { animValue, index, length, backgroundColor } = props;
   const width = 8;
+
+  const widthStyle = useAnimatedStyle(() => {
+    let inputRange = [index - 1, index, index + 1];
+
+    if (index === 0 && animValue?.value > length - 1) {
+      inputRange = [length - 1, length, length + 1];
+    }
+
+    return {
+      width: interpolate(
+        animValue?.value,
+        inputRange,
+        [8, 19, 8],
+        Extrapolate.CLAMP,
+      ),
+    };
+  }, [animValue, index, length, width]);
 
   const animStyle = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
@@ -44,16 +61,11 @@ export const CarouselProgress = (props: IProps) => {
   }, [animValue, index, length, width]);
 
   return (
-    <View
-      style={[
-        styles.container,
-        { transform: [{ rotateZ: isRotate ? '90deg' : '0deg' }] },
-      ]}
-    >
+    <Animated.View style={[styles.container, widthStyle]}>
       <Animated.View
         style={[styles.indicator, { backgroundColor }, animStyle]}
       />
-    </View>
+    </Animated.View>
   );
 };
 
