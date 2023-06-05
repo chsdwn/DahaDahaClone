@@ -29,7 +29,6 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
   return (
     <View>
       <Carousel
-        style={styles.carousel}
         width={WINDOW_WIDTH}
         height={WINDOW_WIDTH * 1.1}
         pagingEnabled
@@ -90,10 +89,8 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
 };
 
 const styles = StyleSheet.create({
-  carousel: {
-    marginTop: -24,
-  },
   shadowContainer: {
+    marginTop: -WINDOW_WIDTH * 0.08,
     position: 'relative',
   },
   shadow: {
@@ -106,6 +103,7 @@ const styles = StyleSheet.create({
     borderColor: theme.lightestGray,
     borderWidth: 2,
     borderRadius: 16,
+    paddingBottom: 4,
   },
   imageContainer: {
     margin: 4,
