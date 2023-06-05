@@ -1,5 +1,6 @@
 export { BrandIcon } from './BrandIcon';
 export { CarouselButton } from './CarouselButton';
+export { CarouselCardShadow } from './CarouselCardShadow';
 export { CarouselImage } from './CarouselImage';
 export { CarouselProgress } from './CarouselProgress';
 export { CarouselRemainingDaysBadge } from './CarouselRemainingDaysBadge';

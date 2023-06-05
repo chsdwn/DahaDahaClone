@@ -9,6 +9,7 @@ import { theme } from '@/config/theme';
 import {
   BrandIcon,
   CarouselButton,
+  CarouselCardShadow,
   CarouselImage,
   CarouselProgress,
   CarouselRemainingDaysBadge,
@@ -28,27 +29,30 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
   return (
     <View>
       <Carousel
-        width={WINDOW_WIDTH}
         style={styles.carousel}
+        width={WINDOW_WIDTH}
+        height={WINDOW_WIDTH * 1.1}
         pagingEnabled
         snapEnabled
         loop={false}
         mode="parallax"
         modeConfig={{
           parallaxScrollingScale: 0.8,
-          parallaxScrollingOffset: 90,
+          parallaxScrollingOffset: WINDOW_WIDTH * 0.25,
         }}
         onProgressChange={(_, absoluteValue) => {
           carouselProgress.value = absoluteValue;
         }}
         data={promotions}
         renderItem={({ item: promotion }) => (
-          <View
-            style={[
-              styles.outerShadow,
-              { backgroundColor: promotion.PromotionCardColor },
-            ]}
-          >
+          <View style={styles.shadowContainer}>
+            <View style={styles.shadow}>
+              <CarouselCardShadow
+                width={WINDOW_WIDTH}
+                color={promotion.PromotionCardColor}
+              />
+            </View>
+
             <View key={promotion.Id} style={styles.container}>
               <View style={styles.imageContainer}>
                 <CarouselImage url={promotion.ImageUrl} />
@@ -86,14 +90,16 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
 };
 
 const styles = StyleSheet.create({
-  outerShadow: {
-    paddingBottom: 16,
-    borderRadius: 16,
-  },
   carousel: {
-    width: WINDOW_WIDTH,
-    height: 450,
-    marginTop: -16,
+    marginTop: -24,
+  },
+  shadowContainer: {
+    position: 'relative',
+  },
+  shadow: {
+    position: 'absolute',
+    bottom: -16,
+    height: 32,
   },
   container: {
     backgroundColor: theme.white,
@@ -109,6 +115,6 @@ const styles = StyleSheet.create({
   progressContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: -48,
+    marginTop: 16,
   },
 });
