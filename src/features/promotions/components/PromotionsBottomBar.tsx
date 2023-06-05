@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import DropShadow from 'react-native-drop-shadow';
 
 import { Text } from '@/components';
 import { BottomBarPlus, Compass, Star } from '@/components/icons';
@@ -17,38 +18,45 @@ export const PromotionsBottomBar = ({ navigation }: BottomTabBarProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.bottomBar}>
-        <TouchableWithoutFeedback
-          onPress={() => navigation.navigate('Promotions')}
-        >
-          <View style={styles.tabBtn}>
-            <Compass width={26} color={promotionTabColor} />
+      <DropShadow style={styles.shadow}>
+        <View style={styles.bottomBar}>
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('Promotions')}
+          >
+            <View style={styles.tabBtn}>
+              <Compass width={26} color={promotionTabColor} />
 
-            <Text
-              bold
-              style={[styles.tabBtnTitle, { color: promotionTabColor }]}
-            >
-              KEŞFET
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
+              <Text
+                bold
+                style={[styles.tabBtnTitle, { color: promotionTabColor }]}
+              >
+                KEŞFET
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
 
-        <View style={styles.logoContainer}>
-          <View style={styles.logoShadow} />
-          <View style={styles.logo}>
-            <BottomBarPlus width={36} />
+          <View style={styles.logoContainer}>
+            <View style={styles.logoShadow} />
+            <View style={styles.logo}>
+              <BottomBarPlus width={36} />
+            </View>
           </View>
+
+          <TouchableWithoutFeedback
+            onPress={() => navigation.navigate('Wallet')}
+          >
+            <View style={styles.tabBtn}>
+              <Star width={26} color={walletTabColor} />
+              <Text
+                bold
+                style={[styles.tabBtnTitle, { color: walletTabColor }]}
+              >
+                DAHA CÜZDAN
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
-
-        <TouchableWithoutFeedback onPress={() => navigation.navigate('Wallet')}>
-          <View style={styles.tabBtn}>
-            <Star width={26} color={walletTabColor} />
-            <Text bold style={[styles.tabBtnTitle, { color: walletTabColor }]}>
-              DAHA CÜZDAN
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
+      </DropShadow>
     </View>
   );
 };
@@ -57,10 +65,18 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.white,
   },
+  shadow: {
+    shadowColor: theme.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    borderRadius: 16,
+  },
   bottomBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: theme.white,
     borderColor: theme.lighterGray,
     borderWidth: 2.5,
     borderTopRightRadius: 16,
