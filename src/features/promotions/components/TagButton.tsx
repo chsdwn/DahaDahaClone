@@ -1,10 +1,6 @@
 import React from 'react';
-import {
-  Image,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 import { Text } from '@/components';
 import { Search } from '@/components/icons';
@@ -26,14 +22,14 @@ export const TagButton = ({
   onPress,
 }: IProps) => {
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <TouchableWithoutFeedback
+      onPress={onPress}
+      style={{ marginRight: separate ? 6 : 0 }}
+    >
       <View
         style={[
           styles.iconContainer,
-          {
-            borderColor: active ? theme.red : theme.lighterGray,
-            marginRight: separate ? 6 : 0,
-          },
+          { borderColor: active ? theme.red : theme.lighterGray },
         ]}
       >
         {imageUrl && (
