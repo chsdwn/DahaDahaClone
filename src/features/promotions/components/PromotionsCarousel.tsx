@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
+import { useNavigation } from '@react-navigation/core';
 
 import { Loading } from '@/components';
 import { WINDOW_WIDTH } from '@/config';
 import { theme } from '@/config/theme';
+import { HomeBottomTabNavigationProp } from '@/types';
 import {
   BrandIcon,
   CarouselButton,
@@ -23,8 +25,16 @@ type IProps = {
 };
 
 export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
+  const navigation = useNavigation<HomeBottomTabNavigationProp>();
+
   const carouselProgress = useSharedValue(0);
 
+  const handleNavigatePromotionDetails = (id: number) => {
+    navigation.navigate('PromotionDetailsStack', {
+      screen: 'PromotionDetails',
+      params: { id },
+    });
+  };
   if (isLoading) return <Loading />;
   return (
     <View>
@@ -52,23 +62,24 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
               />
             </View>
 
-            <View key={promotion.Id} style={styles.container}>
-              <View style={styles.imageContainer}>
-                <CarouselImage url={promotion.ImageUrl} />
+            <TouchableWithoutFeedback
+              onPress={() => handleNavigatePromotionDetails(promotion.Id)}
+            >
+              <View key={promotion.Id} style={styles.container}>
+                <View style={styles.imageContainer}>
+                  <CarouselImage url={promotion.ImageUrl} />
 
-                <BrandIcon
-                  backgroundColor={promotion.BrandIconColor}
-                  url={promotion.BrandIconUrl}
-                />
-                <CarouselRemainingDaysBadge date={promotion.RemainingText} />
+                  <BrandIcon
+                    backgroundColor={promotion.BrandIconColor}
+                    url={promotion.BrandIconUrl}
+                  />
+                  <CarouselRemainingDaysBadge date={promotion.RemainingText} />
+                </View>
+
+                <CarouselTitle html={promotion.Title} />
+                <CarouselButton html={promotion.ListButtonText} />
               </View>
-
-              <CarouselTitle html={promotion.Title} />
-              <CarouselButton
-                id={promotion.Id}
-                html={promotion.ListButtonText}
-              />
-            </View>
+            </TouchableWithoutFeedback>
           </View>
         )}
       />
@@ -88,6 +99,7 @@ export const PromotionsCarousel = ({ promotions = [], isLoading }: IProps) => {
   );
 };
 
+const borderRadius = 16;
 const styles = StyleSheet.create({
   shadowContainer: {
     marginTop: -WINDOW_WIDTH * 0.08,
@@ -95,24 +107,23 @@ const styles = StyleSheet.create({
   },
   shadow: {
     position: 'absolute',
-    bottom: -16,
-    height: 32,
+    bottom: -borderRadius,
+    height: borderRadius * 2,
   },
   container: {
     backgroundColor: theme.white,
     borderColor: theme.lightestGray,
     borderWidth: 2,
-    borderRadius: 16,
+    borderRadius,
     paddingBottom: 4,
   },
   imageContainer: {
     margin: 4,
-    borderRadius: 16,
+    borderRadius,
     position: 'relative',
   },
   progressContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 16,
   },
 });
