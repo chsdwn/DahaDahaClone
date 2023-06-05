@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/core';
-import RenderHtml from 'react-native-render-html';
+import RenderHtml, { MixedStyleDeclaration } from 'react-native-render-html';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { Layout, Loading, Text } from '@/components';
@@ -61,29 +61,13 @@ export const PromotionDetails = () => {
           <RenderHtml
             source={{ html: promotion.Title }}
             contentWidth={WINDOW_WIDTH - 32}
-            tagsStyles={{
-              p: {
-                fontFamily: 'Helvetica',
-                fontWeight: '700',
-                fontSize: 26,
-                textAlign: 'left',
-                color: theme.darkGray,
-              },
-            }}
+            tagsStyles={titleTagStyles}
           />
 
           <RenderHtml
             source={{ html: promotion.Description }}
             contentWidth={WINDOW_WIDTH - 32}
-            tagsStyles={{
-              p: {
-                fontFamily: 'Helvetica',
-                fontWeight: '400',
-                fontSize: 14,
-                textAlign: 'left',
-                color: theme.darkGray,
-              },
-            }}
+            tagsStyles={descriptionTagStyles}
           />
         </View>
       </ScrollView>
@@ -162,3 +146,23 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+
+const titleTagStyles = {
+  p: {
+    fontFamily: 'Helvetica',
+    fontWeight: '700',
+    fontSize: 26,
+    textAlign: 'left',
+    color: theme.darkGray,
+  },
+} as Readonly<Record<string, MixedStyleDeclaration>>;
+
+const descriptionTagStyles = {
+  p: {
+    fontFamily: 'Helvetica',
+    fontWeight: '400',
+    fontSize: 14,
+    textAlign: 'left',
+    color: theme.darkGray,
+  },
+} as Readonly<Record<string, MixedStyleDeclaration>>;
