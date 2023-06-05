@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Layout } from '@/components';
@@ -12,31 +12,25 @@ import {
   TagButtonsList,
 } from '../components';
 import { selectActiveTag } from '../store/promotionsSlice';
-import { IPromotionItem } from '../types';
 
 export const Promotions = () => {
   const { data: promotionsData, isLoading } = useGetPromotionsQuery();
-  const [promotions, setPromotions] = useState<IPromotionItem[]>([]);
-
-  const { data } = useGetTagsQuery();
-  const tags = [...(data || [])].sort((a, b) => a.Rank - b.Rank);
-
   const activeTag = useSelector(selectActiveTag);
 
-  useEffect(() => {
-    if (!promotionsData || promotionsData.length === 0) return;
-    if (!activeTag) {
-      setPromotions(promotionsData);
-      return;
-    }
+  const promotions = useMemo(() => {
+    if (!promotionsData || promotionsData.length === 0) return [];
+    if (!activeTag) return promotionsData;
 
     const filteredPromotions = promotionsData.filter((promotion) =>
       promotion.Title.toLocaleLowerCase('tr').includes(
         activeTag.Name.toLocaleLowerCase('tr'),
       ),
     );
-    setPromotions(filteredPromotions);
-  }, [activeTag, promotionsData]);
+    return filteredPromotions;
+  }, [promotionsData, activeTag]);
+
+  const { data } = useGetTagsQuery();
+  const tags = [...(data || [])].sort((a, b) => a.Rank - b.Rank);
 
   return (
     <Layout>
