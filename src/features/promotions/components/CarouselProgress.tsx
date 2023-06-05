@@ -16,9 +16,11 @@ type IProps = {
   isRotate?: boolean;
 };
 
+const ACTIVE_INDICATOR_SIZE = 18;
+const INDICATOR_SIZE = 8;
+
 export const CarouselProgress = (props: IProps) => {
   const { animValue, index, length, backgroundColor } = props;
-  const width = 8;
 
   const widthStyle = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
@@ -31,19 +33,17 @@ export const CarouselProgress = (props: IProps) => {
       width: interpolate(
         animValue?.value,
         inputRange,
-        [8, 19, 8],
+        [INDICATOR_SIZE, ACTIVE_INDICATOR_SIZE, INDICATOR_SIZE],
         Extrapolate.CLAMP,
       ),
     };
-  }, [animValue, index, length, width]);
+  }, [animValue, index, length]);
 
   const animStyle = useAnimatedStyle(() => {
     let inputRange = [index - 1, index, index + 1];
-    let outputRange = [-width, 0, width];
 
     if (index === 0 && animValue?.value > length - 1) {
       inputRange = [length - 1, length, length + 1];
-      outputRange = [-width, 0, width];
     }
 
     return {
@@ -52,13 +52,13 @@ export const CarouselProgress = (props: IProps) => {
           translateX: interpolate(
             animValue?.value,
             inputRange,
-            outputRange,
+            [-INDICATOR_SIZE, 0, INDICATOR_SIZE],
             Extrapolate.CLAMP,
           ),
         },
       ],
     };
-  }, [animValue, index, length, width]);
+  }, [animValue, index, length]);
 
   return (
     <Animated.View style={[styles.container, widthStyle]}>
@@ -72,9 +72,8 @@ export const CarouselProgress = (props: IProps) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.lightGray,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
+    height: INDICATOR_SIZE,
+    borderRadius: INDICATOR_SIZE / 2,
     marginHorizontal: 2,
     overflow: 'hidden',
   },

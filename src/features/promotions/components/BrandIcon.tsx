@@ -16,14 +16,15 @@ export const BrandIcon = ({ url, backgroundColor }: IProps) => {
   );
 };
 
+const size = 55;
 const styles = StyleSheet.create({
   container: {
-    width: 55,
-    height: 55,
+    width: size,
+    height: size,
     position: 'absolute',
     bottom: -5,
     left: 0,
-    borderRadius: 28,
+    borderRadius: size / 2,
     borderWidth: 5,
     borderColor: theme.white,
   },

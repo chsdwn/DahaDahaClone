@@ -61,6 +61,7 @@ export const PromotionsBottomBar = ({ navigation }: BottomTabBarProps) => {
   );
 };
 
+const borderRadius = 16;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.white,
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 6,
-    borderRadius: 16,
+    borderRadius,
   },
   bottomBar: {
     flexDirection: 'row',
@@ -79,8 +80,8 @@ const styles = StyleSheet.create({
     backgroundColor: theme.white,
     borderColor: theme.lighterGray,
     borderWidth: 2.5,
-    borderTopRightRadius: 16,
-    borderTopLeftRadius: 16,
+    borderTopRightRadius: borderRadius,
+    borderTopLeftRadius: borderRadius,
   },
   tabBtn: {
     paddingHorizontal: 8,
