@@ -35,9 +35,7 @@ export const Promotions = () => {
   return (
     <Layout>
       <PromotionsHeader />
-
       <TagButtonsList tags={tags} />
-
       <PromotionsCarousel promotions={promotions} isLoading={isLoading} />
     </Layout>
   );
