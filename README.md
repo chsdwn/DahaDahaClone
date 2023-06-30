@@ -1,12 +1,11 @@
 # Kaizen Case
 
-## Kurulum ve Çalıştırma
+## Instruction to Run App on Simulator/Emulator
 
-1. Dökümanı takip ederek Android ve iOS için React Native development environment kurulumunu yapınız. https://reactnative.dev/docs/environment-setup
-1. Aşağıdaki komutu terminalde çalıştırarak yarn paket yöneticisini kurunuz.
-   - `$ npm i -g yarn`
-1. Terminalden proje dizinine gidiniz ve aşağıdaki komutu çalıştırarak proje için gerekli paketleri indiriniz.
-   - `$ yarn`
-1. Aynı dizinde aşağıdaki komutu çalıştırarak iOS için gerekli paketleri indiriniz.
-   - `$ npx pod-install`
-1. Paket kurumları tamamlandıktan sonra projeyi `$ yarn ios` komutu ile iOS simülatörde, `$ yarn android` komutu ile Android emülatörde çalıştırabilirsiniz.
+1. Install npm packages by running `$ yarn` command.
+1. Install cocoa libraries by running `$ npx pod-install` command.
+1. Run the application on iPhone simulator by `$ yarn ios` or Android emulator by `$ yarn android` command. 
+
+## Video
+
+https://github.com/chsdwn/KaizenCase/assets/13810855/a7371edd-5cf2-4a42-9896-653fb3389125
